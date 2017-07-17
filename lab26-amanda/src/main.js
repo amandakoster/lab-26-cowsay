@@ -1,7 +1,9 @@
 import './style/main.scss'
 import React from 'react' // use jsx
 import ReactDom from 'react-dom' //  render jsx
-import cowsayBrowser from 'cowsay-browser'
+import cowsay from 'cowsay-browser'
+import faker from 'faker'
+
 class Navbar extends React.Component {
   constructor(props){
     super(props);
@@ -21,20 +23,17 @@ class App extends React.Component {
     super(props)
     this.state = {
       title: 'hello world',
-      count: 0,
+      content: 'cowsay',
     }
 
     // force handle click to use the current instances context
     this.handleClick = this.handleClick.bind(this);
   }
 
-
-  handleClick(e){
-    console.log(cowsay.say)
-
+  handleClick(){
     this.setState((state) => {
       return {
-        count: state.count + 1
+        content: faker.lorem.words()
       }
     })
   }
@@ -43,8 +42,8 @@ class App extends React.Component {
     return (
       <div>
         <Navbar />
-        <p onClick={this.handleClick}> counter: {this.state.count} </p>
-        <p> {this.lulwat} </p>
+        <button onClick={this.handleClick}></button>
+        <pre>{cowsay.say({text: this.state.content})}</pre>
       </div>
     )
   }
