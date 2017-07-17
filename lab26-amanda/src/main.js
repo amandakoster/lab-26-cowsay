@@ -12,7 +12,7 @@ class Navbar extends React.Component {
   render(){
     return (
       <header className='hello-navbar'>
-        <h1> counter </h1>
+        <h1> Generate Cowsay Lorem </h1>
       </header>
     );
   }
@@ -23,7 +23,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       title: 'hello world',
-      content: 'cowsay',
+      content: 'Cow say WHAT?',
     }
 
     // force handle click to use the current instances context
@@ -33,7 +33,7 @@ class App extends React.Component {
   handleClick(){
     this.setState((state) => {
       return {
-        content: faker.lorem.words()
+        content: faker.hacker.phrase()
       }
     })
   }
@@ -42,7 +42,7 @@ class App extends React.Component {
     return (
       <div>
         <Navbar />
-        <button onClick={this.handleClick}></button>
+        <button onClick={this.handleClick}>click me</button>
         <pre>{cowsay.say({text: this.state.content})}</pre>
       </div>
     )
