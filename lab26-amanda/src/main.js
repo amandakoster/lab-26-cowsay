@@ -1,51 +1,53 @@
 import './style/main.scss'
-import React from 'react'
-import ReactDom from 'react-dom'
-
+import React from 'react' // use jsx
+import ReactDom from 'react-dom' //  render jsx
+import cowsayBrowser from 'cowsay-browser'
 class Navbar extends React.Component {
   constructor(props){
     super(props);
   }
 
   render(){
-    return(
-    <header className='hello-navbar'>
-      <h1> counter </h1>
-    </header>
+    return (
+      <header className='hello-navbar'>
+        <h1> counter </h1>
+      </header>
     );
   }
 }
 
- class App extends React.Component {
-   constructor(props){
-     super(props)
-     this.state = {
-       title: 'hello world'
-       count: 0
-     }
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      title: 'hello world',
+      count: 0,
+    }
 
-     this.lulwat = 'cool' //what is this matched to?
-   }
+    // force handle click to use the current instances context
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-   handleClick(e){
-     console.log('event', e)
 
-     this.setState((state) => {
-       return {
-         count: state.count + 1
-       }
-     })
-   }
+  handleClick(e){
+    console.log(cowsay.say)
 
-   render() {
-     return (
-       <div>
-       <Navbar />
-       <p onClick={this.handleClick}> counter: {this.state.count} <p>
-       <p> {this.lulwat} </p>
-       </div>
-     )
-   }
- }
+    this.setState((state) => {
+      return {
+        count: state.count + 1
+      }
+    })
+  }
 
-ReactDom.render(<App />, document.getElemendById('root'))
+  render(){
+    return (
+      <div>
+        <Navbar />
+        <p onClick={this.handleClick}> counter: {this.state.count} </p>
+        <p> {this.lulwat} </p>
+      </div>
+    )
+  }
+}
+
+ReactDom.render(<App />, document.getElementById('root'))
