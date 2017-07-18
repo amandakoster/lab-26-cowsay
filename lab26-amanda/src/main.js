@@ -4,49 +4,62 @@ import ReactDom from 'react-dom' //  render jsx
 import cowsay from 'cowsay-browser'
 import faker from 'faker'
 
-class Navbar extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
-  render(){
-    return (
-      <header className='hello-navbar'>
-        <h1> Generate Cowsay Lorem </h1>
-      </header>
-    );
-  }
-}
-
-class App extends React.Component {
-  constructor(props){
+class PokemonForm extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
-      title: 'hello world',
-      content: 'Cow say WHAT?',
+      pokeName:''
     }
-
-    // force handle click to use the current instances context
-    this.handleClick = this.handleClick.bind(this);
+    
+    this.handlePokeNameChange = this.handlePokeNameChange.bind(this)
   }
 
-  handleClick(){
-    this.setState((state) => {
-      return {
-        content: faker.hacker.phrase()
-      }
-    })
+  handlePokeNameChange(){
   }
 
   render(){
     return (
-      <div>
-        <Navbar />
-        <button onClick={this.handleClick}>click me</button>
-        <pre>{cowsay.say({text: this.state.content})}</pre>
-      </div>
+      <form>
+      <input
+      type = 'text'
+      name = 'pokeName'
+      placeholder = 'poke name'
+      value = {this.state.pokeName}
+      onChange={this.handlePokeNameChange}
+      />
+      </form>
     )
   }
 }
 
-ReactDom.render(<App />, document.getElementById('root'))
+handel
+
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      content:'',
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(){
+    this.setState({
+      content: cowsay.say({text: faker.hacker.phrase}),
+    })
+  }
+
+render(){
+  return (
+    <div>
+    <h1>Hello World</h1>
+    <button onClick={this.handleClick}>clicke me</button>
+    <pre> {this.state.content}</pre>
+    </div>
+    )
+  }
+}
+
+const container = document.createElement('div')
+document.body.appendChild(container)
+ReactDom.render(<App />,container)
