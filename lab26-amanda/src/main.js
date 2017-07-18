@@ -10,11 +10,12 @@ class PokemonForm extends React.Component {
     this.state = {
       pokeName:''
     }
-    
+
     this.handlePokeNameChange = this.handlePokeNameChange.bind(this)
   }
 
-  handlePokeNameChange(){
+  handlePokeNameChange(e){
+    this.setState({pokeName: e.target.value})
   }
 
   render(){
@@ -27,12 +28,11 @@ class PokemonForm extends React.Component {
       value = {this.state.pokeName}
       onChange={this.handlePokeNameChange}
       />
+      <p>{this.state.pok}
       </form>
     )
   }
 }
-
-handel
 
 class App extends React.Component {
   constructor(props){
